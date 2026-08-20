@@ -1,0 +1,81 @@
+table {
+    width: 100%;
+    min-height: 50vh;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(243, 63, 63);
+    color: white;
+}
+
+td {
+    background-color: white;
+    margin: 4px;
+}
+
+td,
+th {
+    height: 40px;
+    border-radius: 8px;
+}
+
+
+td:hover {
+    background-color: rgb(232, 135, 151);
+}
+
+table tbody tr:hover {
+    background-color: rgb(125, 10, 29);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#delete {
+    background-color: red;
+}
+
+#update {
+    background-color: rgb(103, 101, 101);
+}
+
+#update,
+#delete {
+    width: 100%;
+    height: 100%;
+}
+
+#update:hover,
+#delete:hover {
+    color: black;
+    background-color: white;
+}
+
+form {
+    width: 100%;
+}
+
+.btnOrder {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.btnMake {
+    background-color: rgb(122, 2, 2);
+    padding: 10px 20px 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    margin-bottom: 4px;
+
+}
+
+.btnMake:hover {
+    color: black;
+    background-color: white;
+}
