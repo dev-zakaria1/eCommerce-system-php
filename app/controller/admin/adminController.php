@@ -11,9 +11,7 @@ class adminController extends controller
     public function __construct()
     {
         session::start();
-        if (empty(session::get('user'))) {
-            helpers::redirect("admin/signUp");
-        }
+        $this->checkPermission();
         
     }
     public function index()

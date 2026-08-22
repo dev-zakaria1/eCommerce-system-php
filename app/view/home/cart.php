@@ -13,14 +13,7 @@
 
     <title>Document</title>
 </head>
-<!-- function pulse_minus(id) {
-    let increaseBtn = document.querySelector(id);
-    increaseBtn.addEventListener('click', function () {
-        count++;
-        numberInput.value = count;
-        currentCount.textContent = count;
-    });
-} -->
+
 
 <body>
     <div class="container">
@@ -60,7 +53,7 @@
             </div>
             <div class="row2">
                 <div class="elements">
-                    <a href="/home/home/getSignIn"><i class="fas fa-person"></i></a>
+                    <a href="/home/signIn/index"><i class="fas fa-person"></i></a>
                     <a href="/"><i class="fas fa-shop"></i></a>
                 </div>
                 <div class="latest">

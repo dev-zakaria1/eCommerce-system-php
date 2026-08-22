@@ -11,7 +11,7 @@
 <body>
     <div class="auth">
         <h1>welcome to our shop :</h1>
-        <form action="/home/home/signUp" method="post">
+        <form action="/home/signUp/signUp" method="post">
             <div class="insert">
                 <label for="name" class="label">name</label>
                 <input type="text" id="name" name="name" placeholder="Enter name">
@@ -28,7 +28,6 @@
                 <label for="password" class="label">password</label>
                 <input type="text" id="password" name="password" placeholder="Enter password">
             </div>
-
             <button type="submit">sign up</button>
         </form>
         <a class="check" href="/home/home/">back</a>

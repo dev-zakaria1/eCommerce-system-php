@@ -12,7 +12,7 @@
 
     <div class="auth">
         <h1>welcome back :</h1>
-        <form action="/home/home/signIn" method="post">
+        <form action="/home/signIn/signIn/" method="post">
             <div class="insert">
                 <label for="name" class="label">name</label>
                 <input type="text" id="name" name="name" placeholder="Enter name">
@@ -30,7 +30,7 @@
         </form>
         <div class="check">
             <p><small>you don't have acount? </small></p>
-            <p>creat one <a href="/home/home/getSignUp">here</a> :</p>
+            <p>creat one <a href="/home/signUp/index">here</a> :</p>
         </div>
     </div>
 </body>

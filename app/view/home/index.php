@@ -25,7 +25,7 @@
                     <ul class="list">
                         <i><a href="/home">home</a></i>
                         <?php foreach ($category_name as $v): ?>
-                            <li><a href="/home/home/getCategories/<?= $v->name ?>" ><?= $v->name ?></a></li>
+                            <li><a href="/home/home/getCategories/<?= $v->name ?>"><?= $v->name ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </nav>
@@ -52,7 +52,12 @@
             </div>
             <div class="row2">
                 <div class="elements">
-                    <a href="/home/home/getSignIn"><i class="fas fa-person"></i></a>
+                    <?php if (empty($sessionCustomer)) { ?><a href="/home/signIn/index"><i class="fas fa-person"></i></a>
+                    <?php } else {
+                    ?> <form action="/home/logout/logout" method="post"><button type="submit">log-out</button></form>
+                    <?php
+                    }
+                    ?>
                     <a href="/home/home/getcart"><i class="fas fa-shop cart"></i></a>
                     <a href="/home/home/logOut"><i class="fas fa-log"></i></a>
                 </div>
