@@ -53,7 +53,7 @@ class productController extends controller
         $product = $product->addProduct($data);
         $id = $product;
         $pro = new product();
-        $item = $pro->getone($id);
+       
         if (!empty($_FILES['img'])) {
             $nameImg = $_FILES['img']['name'];
             $extension = pathinfo($nameImg, PATHINFO_EXTENSION);
