@@ -42,14 +42,7 @@ class productController extends controller
     public function add()
     {
         $product = new product();
-        if (!empty($_FILES['img'])) {
-            $nameImg = $_FILES['img']['name'];
-            $tmp_name = $_FILES['img']['tmp_name'];
-            move_uploaded_file($tmp_name, ROOT . "public\back\upload\images\\" . $nameImg);
-        } else {
-            $nameImg = '';
-            $tmp_name = '';
-        }
+        $nameImg = '';
         $data = [
             'name' => $_POST['name'],
             'price' => $_POST['price'],
@@ -58,6 +51,17 @@ class productController extends controller
             'category_id' => $_POST['category_id']
         ];
         $product = $product->addProduct($data);
+        $id = $product;
+        $pro = new product();
+        $item = $pro->getone($id);
+        if (!empty($_FILES['img'])) {
+            $nameImg = $_FILES['img']['name'];
+            $extension = pathinfo($nameImg, PATHINFO_EXTENSION);
+            $pro = $pro->update(['img' => $id . "." . $extension], $id);
+            $tmp_name = $_FILES['img']['tmp_name'];
+            move_uploaded_file($tmp_name, ROOT . "public\back\upload\images\\" . $id . "." . $extension);
+        }
+
         helpers::redirect("admin/product/index");
     }
     public function delete($id)
@@ -74,6 +78,7 @@ class productController extends controller
             echo "error";
         }
     }
+
     public function update($id)
     {
         $product = new product();
@@ -85,10 +90,11 @@ class productController extends controller
             }
             $nameImg = $_FILES['img']['name'];
             $tmp_name = $_FILES['img']['tmp_name'];
-            move_uploaded_file($tmp_name, ROOT . "public\back\upload\images\\" . $nameImg);
+            $extension = pathinfo($nameImg, PATHINFO_EXTENSION);
+            move_uploaded_file($tmp_name, ROOT . "public\back\upload\images\\" . $id . "." . $extension);
             $data = [
                 'name' => $_POST['name'],
-                'img' => $nameImg,
+                'img' => $id . "." . $extension,
                 'price' => $_POST['price'],
                 'category_id' => $_POST['category_id'],
                 'user_id' => $_SESSION['id']
@@ -102,11 +108,7 @@ class productController extends controller
             ];
         }
         $check = $product->update($data, $id);
-        if ($check == 1) {
-            helpers::redirect("admin/product/index");
-        } else {
-            echo "there is nothing change";
-        }
+        helpers::redirect("admin/product/index");
     }
     function deleteImg()
     {
