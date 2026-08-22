@@ -33,7 +33,8 @@ class homeController extends controller
             $product = $product->search($_POST['search']);
             return $this->view("home/index", ['product' => $product, 'added_latest' => $added_latest, 'category_name' => $category_name]);
         }
-        return $this->view("home/index", ['product' => $productCat, 'added_latest' => $added_latest, 'category_name' => $category_name]);
+        $sessionCustomer = session::get('customerId');
+        return $this->view("home/index", ['product' => $productCat, 'added_latest' => $added_latest, 'category_name' => $category_name, 'sessionCustomer' => $sessionCustomer]);
     }
     public function getCart()
     {
@@ -41,6 +42,7 @@ class homeController extends controller
     }
     public function getOrder()
     {
+
         if (!empty(session::get('customerId'))) {
             if (empty($_POST)) {
                 echo "there is on data";
@@ -74,7 +76,7 @@ class homeController extends controller
                 echo "there is on data";
             }
         } else {
-            helpers::redirect("/home/home/getSignIn");
+            helpers::redirect("/home/signIn/index");
         }
     }
 
@@ -107,63 +109,10 @@ class homeController extends controller
             helpers::redirect("/home");
         }
     }
-    public function getSignIn()
-    {
-        return $this->view("home/signIn", []);
-    }
-    public function getSignUp()
-    {
-        return $this->view("home/signUp", []);
-    }
-    public function signIn()
-    {
-        $customer = new customer();
-        $customer = $customer->getAll();
-        $data = [
-            'name' => $_POST['name'],
-            'email' => $_POST['email'],
-            'password' => $_POST['password'],
-        ];
-        $customer = array_filter($customer, function ($cust) use ($data) {
 
-            return $cust->email === $data['email'] && $cust->password === $data['password'];
-        });
 
-        if (!empty($customer)) {
 
-            session::set('customerId', $customer[0]->id);
-
-            helpers::redirect("home/");
-        } else {
-            helpers::redirect("home/home/getSignIn");
-        }
-    }
-    public function signUp()
-    {
-
-        $customer = new customer();
-
-        if (!empty($_POST)) {
-            $data = [
-                'name' => $_POST['name'],
-                'phone' => $_POST['phone'],
-                'email' => $_POST['email'],
-                'password' => $_POST['password'],
-            ];
-            $customer = $customer->insert($data);
-
-            if (!empty($customer)) {
-                session::set('customerId', $customer);
-                helpers::redirect("home/");
-            } else {
-                echo "there is no data";
-            }
-        }
-    }
-    function logOut()
-    {
-        session::stop();
-    }
+   
     function getCategories($name)
     {
         $category = new category();

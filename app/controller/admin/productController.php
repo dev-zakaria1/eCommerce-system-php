@@ -8,16 +8,13 @@ use PRO\core\session;
 use PRO\model\product;
 use PRO\model\views;
 use PRO\model\category;
-// SELECT product.* ,`order`.id AS orderNumber FROM product INNER JOIN order_items ON order_items.product_id=product.id INNER JOIN `order` ON `order`.id = order_items.order_id;
+
 class productController extends controller
 {
     public function __construct()
     {
         session::start();
-        if (empty(session::get('user'))) {
-            echo "class not access";
-            die;
-        }
+        $this->checkPermission();
     }
     public function index()
     {
@@ -84,7 +81,7 @@ class productController extends controller
         $get = $get->getOne($id);
         if (!empty($_FILES['img']['name'])) {
             if (!empty($get->img)) {
-                // helpers::deleteimg($get->img);
+                helpers::deleteimg($get->img);
             }
             $nameImg = $_FILES['img']['name'];
             $tmp_name = $_FILES['img']['tmp_name'];

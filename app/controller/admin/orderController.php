@@ -14,10 +14,7 @@ class orderController extends controller
     public function __construct()
     {
         session::start();
-        if (empty(session::get('user'))) {
-            echo "class not access";
-            die;
-        }
+        $this->checkPermission();
     }
     public function index()
     {
