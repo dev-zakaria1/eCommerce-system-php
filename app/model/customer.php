@@ -21,5 +21,10 @@ class customer extends model
         $customer = model::db()->row("SELECT * from customer WHERE id=?", $id);
         return $customer;
     }
-    
+    public function countCustomers()
+    {
+        $customer = model::db()->rows("SELECT id FROM customer");
+        $count = count($customer);
+        return $count;
+    }
 }

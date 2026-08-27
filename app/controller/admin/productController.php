@@ -53,7 +53,6 @@ class productController extends controller
         $product = $product->addProduct($data);
         $id = $product;
         $pro = new product();
-       
         if (!empty($_FILES['img'])) {
             $nameImg = $_FILES['img']['name'];
             $extension = pathinfo($nameImg, PATHINFO_EXTENSION);
@@ -109,7 +108,7 @@ class productController extends controller
         }
         $check = $product->update($data, $id);
         helpers::redirect("admin/product/index");
-    }
+    } 
     function deleteImg()
     {
         helpers::deleteimg("e-commerce.webp");

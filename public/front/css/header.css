@@ -82,8 +82,10 @@ body {
 
 .elements {
     width: 20%;
+    height: 10%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
 }
 
 #menu-icon {

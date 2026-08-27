@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php ROOT ?>/front/css/style.css">
-    <title>Document</title>
-</head>
+<?php require_once('layout/headAuth.php') ?>
 
 <body>
     <div class="auth">

@@ -11,4 +11,10 @@ class user extends model
         $user = model::db()->rows("SELECT * FROM user");
         return $user;
     }
+    public function countUsers()
+    {
+        $user = model::db()->rows("SELECT id FROM user");
+        $count = count($user);
+        return $count;
+    }
 }

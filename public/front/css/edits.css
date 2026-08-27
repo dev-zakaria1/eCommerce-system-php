@@ -1,0 +1,16 @@
+.auth-info {
+    width: 50%;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.button-log-out {
+    width: 100%;
+}
+
+.elements-main {
+    display: flex;
+    width: 20%;
+    justify-content: space-evenly;
+    align-items: center;
+}

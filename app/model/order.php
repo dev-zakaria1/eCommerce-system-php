@@ -16,9 +16,15 @@ class order extends model
         $order = model::db()->insert(" `order` ", $data);
         return $order;
     }
-    // public function insert1($address, $payment_status, $order_date, $total_amount, $customer_id)
-    // {
-    //     $order = model::db()->row("INSERT INTO `order`( address, payment_status, order_date, total_amount, customer_id) VALUES ('$address', '$payment_status', '$order_date', '$total_amount', '$customer_id')");
-    //     return $order;
-    // }
+    public function CoutOrders()
+    {
+        $order = model::db()->rows("SELECT id FROM `order`");
+        $count = count($order);
+        return $count;
+    }
+    public function latestOrders()
+    {
+        $order = model::db()->rows("SELECT `order`.*,customer.name FROM `order` JOIN customer ON customer.id=`order`.customer_id ORDER BY id DESC limit 6");
+        return $order;
+    }
 }

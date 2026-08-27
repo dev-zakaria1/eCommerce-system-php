@@ -5,6 +5,10 @@ namespace PRO\controller\admin;
 use PRO\core\controller;
 use PRO\core\helpers;
 use PRO\core\session;
+use PRO\model\customer;
+use PRO\model\order;
+use PRO\model\product;
+use PRO\model\user;
 
 class adminController extends controller
 {
@@ -12,10 +16,25 @@ class adminController extends controller
     {
         session::start();
         $this->checkPermission();
-        
     }
     public function index()
     {
-        return $this->view("back/index", []);
+
+        $Orders = new order();
+        $numbersCustomers = new customer();
+        $numbersUsers = new user();
+        $numbersProduct = new product();
+        $numbersOrders = $Orders->CoutOrders();
+        $numbersCustomers = $numbersCustomers->countCustomers();
+        $numbersProduct = $numbersProduct->countProducts();
+        $numbersUsers = $numbersUsers->countUsers();
+        $latestOrders = $Orders->latestOrders();
+        return $this->view("back/index", [
+            'numbersOrders' => $numbersOrders,
+            'numbersCustomers' => $numbersCustomers,
+            'numbersProducts' => $numbersProduct,
+            'numbersUsers' => $numbersUsers,
+            'latestOrders' => $latestOrders
+        ]);
     }
 }
