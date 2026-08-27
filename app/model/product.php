@@ -46,4 +46,10 @@ class product extends model
         $added_latest = $this->db()->rows("SELECT product.img FROM product ORDER BY id DESC LIMIT 3");
         return $added_latest;
     }
+    public function countProducts()
+    {
+        $product = model::db()->rows("SELECT id FROM product");
+        $count = count($product);
+        return $count;
+    }
 }

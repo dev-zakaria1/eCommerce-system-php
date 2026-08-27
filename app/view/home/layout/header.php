@@ -10,24 +10,13 @@
     <link rel="stylesheet" href="<?php ROOT ?>/front/css/footer.css">
     <link rel="stylesheet" href="<?php ROOT ?>/front/css/content.css">
     <link rel="stylesheet" href="<?php ROOT ?>/front/css/schedual.css">
+    <link rel="stylesheet" href="<?php ROOT ?>/front/css/cart.css">
+    <link rel="stylesheet" href="<?php ROOT ?>/front/css/edits.css">
+    <style>
+
+    </style>
     <title>Document</title>
 </head>
 
+
 <body>
-
-    <div class="container">
-        <div class="scheduale">
-            
-        </div>
-    </div>
-    <div class="footer">
-        <p>The copy right is saved : zakaria zarifa
-        </p>
-    </div>
-    <script src="javascript/main.js">
-
-    </script>
-
-</body>
-
-</html>
